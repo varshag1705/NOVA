@@ -5,6 +5,7 @@ import { Footer } from './components/common/Footer';
 import { ToastContainer } from './components/common/Toast';
 import { CartDrawer } from './components/common/CartDrawer';
 import { CompareDrawer } from './components/common/CompareDrawer';
+import { Chatbot } from './components/common/Chatbot';
 
 import { HomePage } from './pages/HomePage';
 import { ShopPage } from './pages/ShopPage';
@@ -151,6 +152,7 @@ function MainAppContent() {
       {/* Global Overlays & Modals */}
       <CartDrawer onNavigate={handleNavigateTab} />
       <CompareDrawer />
+      <Chatbot />
       <ToastContainer />
     </div>
   );

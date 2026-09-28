@@ -8,7 +8,8 @@ import {
   User,
   SlidersHorizontal,
   X,
-  Menu
+  Menu,
+  Bot
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -29,7 +30,8 @@ export const Header: React.FC<HeaderProps> = ({
     wishlist,
     setIsCartDrawerOpen,
     compareList,
-    setIsCompareOpen
+    setIsCompareOpen,
+    setIsChatOpen
   } = useStore();
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -145,6 +147,16 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Zone 3: Actions (Search, Wishlist, Compare, Cart, Mobile Toggle) */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            {/* AI Assistant Chatbot Trigger */}
+            <button
+              onClick={() => setIsChatOpen(true)}
+              title="Chat with NOVA AI Assistant (n8n)"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-emerald-900 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/80 rounded-lg transition-colors cursor-pointer"
+            >
+              <Bot className="w-3.5 h-3.5 text-emerald-700" />
+              <span className="hidden sm:inline">AI Chat</span>
+            </button>
+
             {/* Search Trigger */}
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
@@ -243,6 +255,21 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-stone-200 bg-white px-4 py-4 space-y-2">
+          <button
+            onClick={() => {
+              setIsChatOpen(true);
+              setMobileMenuOpen(false);
+            }}
+            className="w-full text-left px-3 py-2 text-sm text-emerald-900 bg-emerald-50 hover:bg-emerald-100 rounded-md transition-colors flex items-center justify-between"
+          >
+            <span className="flex items-center gap-2">
+              <Bot className="w-4 h-4 text-emerald-700" />
+              Ask NOVA AI Assistant
+            </span>
+            <span className="text-[10px] bg-emerald-700 text-white px-2 py-0.5 rounded-sm uppercase tracking-wider font-semibold font-mono-data">
+              n8n Live
+            </span>
+          </button>
           <button
             onClick={() => handleNavClick('home')}
             className={`w-full text-left px-3 py-2 text-sm rounded-md transition-colors ${

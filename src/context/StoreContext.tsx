@@ -117,6 +117,7 @@ interface StoreContextType {
   toasts: ToastMessage[];
   isCartDrawerOpen: boolean;
   isCompareOpen: boolean;
+  isChatOpen: boolean;
   savedForLater: CartItem[];
 
   // Cart operations
@@ -128,6 +129,7 @@ interface StoreContextType {
   moveToCartFromSaved: (productId: string) => void;
   removeSavedForLater: (productId: string) => void;
   setIsCartDrawerOpen: (open: boolean) => void;
+  setIsChatOpen: (open: boolean) => void;
 
   // Wishlist operations
   toggleWishlist: (productId: string) => void;
@@ -227,8 +229,9 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [compareList, setCompareList] = useState<string[]>([]);
   const [isCompareOpen, setIsCompareOpen] = useState(false);
 
-  // Drawer
+  // Drawer & Chat
   const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   // Addresses
   const [savedAddresses, setSavedAddresses] = useState<Address[]>(() => {
@@ -600,6 +603,7 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         toasts,
         isCartDrawerOpen,
         isCompareOpen,
+        isChatOpen,
         savedForLater,
 
         addToCart,
@@ -610,6 +614,7 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         moveToCartFromSaved,
         removeSavedForLater,
         setIsCartDrawerOpen,
+        setIsChatOpen,
 
         toggleWishlist,
         isInWishlist,
