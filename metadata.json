@@ -1,0 +1,6 @@
+{
+  "name": "NOVA CART",
+  "description": "Shopping that understands you. A modern premium e-commerce platform featuring NOVA Smart Match AI recommendations, curated lifestyle goods, and seamless checkout.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
